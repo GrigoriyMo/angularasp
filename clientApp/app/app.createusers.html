@@ -1,0 +1,69 @@
+﻿<h1>Create users page</h1>
+<div>
+    <form #reg_form="ngForm" class="needs-validation" name="reg_form" novalidate>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">First name</label>
+                <input name="first_name" [(ngModel)]="user.Name" #firstName="ngModel" type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
+                <div [hidden]="firstName.valid || firstName.untouched" class="alert alert-danger">
+                    Не указано Имя
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Last name</label>
+                <input name="last_name" [(ngModel)]="user.Lastname" #lastName="ngModel" type="text" class="form-control" id="validationCustom02" placeholder="Last name" required>
+                <div [hidden]="lastName.valid || lastName.untouched" class="alert alert-danger">
+                    Не указана фамилия
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustomUsername">Phone</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend"># </span>
+                    </div>
+                    <input name="phone" [(ngModel)]="user.Phone" #phone="ngModel" type="tel" class="form-control" id="validationCustomUsername" placeholder="Your phone number" aria-describedby="inputGroupPrepend" required>
+                    <div [hidden]="phone.valid || phone.untouched" class="alert alert-danger">
+                        Не указан телефон
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustomCity03">City</label>
+                <select id="validationCustomCity03" multiple name="cities" [(ngModel)]="user.Cities" required>
+                    <option [ngValue]="city" *ngFor="let city of dropdownList"> {{city}} </option> 
+                </select>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom04">Age</label>
+                <input name="age" [(ngModel)]="user.Age" #age="ngModel" type="number" class="form-control" id="validationCustom04" placeholder="Age" required>
+                <div [hidden]="age.valid || age.untouched" class="alert alert-danger">
+                    Не указан возраст
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom05">Address</label>
+                <input name="address" [(ngModel)]="user.Address" #address="ngModel" type="text" class="form-control" id="validationCustom05" placeholder="Address" required>
+                <div [hidden]="address.valid || address.untouched" class="alert alert-danger">
+                    Не указан адрес
+                </div>
+            </div>
+        </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Agree to <a href="/Home/Privacy">terms and conditions</a>
+                    </label>
+                    <div class="invalid-feedback">
+                        You must agree before submitting.
+                    </div>
+                </div>
+            </div>
+            <input (click)="createUser(firstName, lastName, age, address, phone, city)" type="submit" [disabled]="reg_form.invalid" class="btn btn-primary" value="Отправить" />
+</form>
+</div>
+<router-outlet></router-outlet>

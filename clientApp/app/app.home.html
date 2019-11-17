@@ -1,0 +1,5 @@
+﻿<li *ngFor="let method of methods">
+    <a routerLink="/{{method}}" 
+       routerLinkActive="active-link">{{method}}</a>
+</li>
+<router-outlet></router-outlet>

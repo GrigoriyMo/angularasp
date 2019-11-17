@@ -1,0 +1,21 @@
+﻿<h1>GetUsersPage</h1>
+    <p> Click button below to check if new users exist -></p>
+    <button (click)="getUsers()" type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+        Check
+    </button>
+    <div class="list-group" *ngFor="let user of users">
+        <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">ID:{{user.Id}} Full name : {{user.Name+"  "+user.LastName}}</h5>
+                <small class="text-muted">
+                </small>
+            </div>
+            <p class="mb-1">
+                Age: {{user.Age}}<br />
+                Address: {{user.Address}}<br />
+                Phone: {{user.Phone}}
+            </p>
+            <small class="text-muted">Umbrella Corp 2019.</small>
+        </a>
+    </div>
+

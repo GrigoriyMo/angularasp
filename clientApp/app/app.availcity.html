@@ -1,0 +1,19 @@
+﻿<p>avalaible cities page</p>
+<select [(ngModel)]="user.Id" name="profile">
+    <option [ngValue]="null" disabled>Choose user name</option>
+    <option *ngFor="let user of users" [value]="user.Id">
+        {{ user.Name }}
+    </option>
+</select>
+<button (click)="listAllCitiesByUserId()">Check user avalaible cities</button>
+<div>
+    <p>Available cities for the user</p>
+    <ol>
+        <li *ngFor="let city of cities">
+            {{city.Name}}
+        </li>
+    </ol>
+</div>
+
+<router-outlet></router-outlet>
+<!--[ngClass]="{invisible: visibility}"-->
